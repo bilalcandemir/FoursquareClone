@@ -18,10 +18,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
 
         
-        self.title = "Select Location"
-        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house"), style: .plain, target: self, action: #selector(backToHome))
+    
         
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location.north.fill"), style: .plain, target: self, action: #selector(save))
+        
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(back))
         
         navigationController?.navigationBar.tintColor = Colors.textColor
         
@@ -75,12 +76,10 @@ extension MapViewController{
     }
     
     
-    @objc func backToHome(){
-        let nc = storyboard?.instantiateViewController(withIdentifier: "PlacesNC") as! UINavigationController
-        nc.modalPresentationStyle = .fullScreen
-        self.present(nc, animated: true, completion: nil)
-    }
     
+    @objc func back(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @objc func chooseLocation(gestureRecognizer: UIGestureRecognizer){
         if gestureRecognizer.state == UIGestureRecognizer.State.began{

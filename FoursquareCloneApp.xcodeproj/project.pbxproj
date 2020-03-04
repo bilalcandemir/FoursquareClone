@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		136949C595197D8609AE7E2F /* Pods_FoursquareCloneApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB532A7870226CC1872B74D /* Pods_FoursquareCloneApp.framework */; };
 		56404A7A240C3CEB00495615 /* PlaceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56404A79240C3CEB00495615 /* PlaceMapViewController.swift */; };
+		56404A7C240FE97600495615 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56404A7B240FE97600495615 /* NavigationController.swift */; };
 		5640BE9C23D4FF050080D34C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5640BE9B23D4FF050080D34C /* AppDelegate.swift */; };
 		5640BE9E23D4FF050080D34C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5640BE9D23D4FF050080D34C /* SceneDelegate.swift */; };
 		5640BEA023D4FF050080D34C /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5640BE9F23D4FF050080D34C /* PlacesViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		56404A79240C3CEB00495615 /* PlaceMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapViewController.swift; sourceTree = "<group>"; };
+		56404A7B240FE97600495615 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5640BE9823D4FF050080D34C /* FoursquareCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5640BE9B23D4FF050080D34C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5640BE9D23D4FF050080D34C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				56DB8E0923FFC13800F76433 /* MapViewController.swift */,
 				56DB8E0B2402FDD400F76433 /* PlaceDetailsViewController.swift */,
 				56404A79240C3CEB00495615 /* PlaceMapViewController.swift */,
+				56404A7B240FE97600495615 /* NavigationController.swift */,
 			);
 			path = FoursquareCloneApp;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				5640BEB223D5E83E0080D34C /* SignInViewController.swift in Sources */,
 				5640BEB923D70CEC0080D34C /* SignUpViewController.swift in Sources */,
 				5640BEB623D5EA960080D34C /* Colors.swift in Sources */,
+				56404A7C240FE97600495615 /* NavigationController.swift in Sources */,
 				56404A7A240C3CEB00495615 /* PlaceMapViewController.swift in Sources */,
 				5640BEBF23DF238F0080D34C /* AddPlaceViewController.swift in Sources */,
 				56DB8E0C2402FDD400F76433 /* PlaceDetailsViewController.swift in Sources */,

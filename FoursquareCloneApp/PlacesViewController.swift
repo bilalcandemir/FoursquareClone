@@ -64,11 +64,11 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPlaceId = placeId[indexPath.row]
-        let vc = storyboard!.instantiateViewController(withIdentifier: "DetailsVC") as! PlaceDetailsViewController
-        vc.modalPresentationStyle = .fullScreen
+        let nc = storyboard!.instantiateViewController(withIdentifier: "PlaceDetailsNC") as! UINavigationController
+        nc.modalPresentationStyle = .fullScreen
+        let vc = nc.topViewController as! PlaceDetailsViewController
         vc.selectedPlaceId = placeId[indexPath.row]
-        self.present(vc, animated: true, completion: nil)
-        
+        self.present(nc, animated: true, completion: nil)
     }
 }
 //MARK: Functions

@@ -4,25 +4,20 @@
 //
 //  Created by Bilal Candemir on 1.03.2020.
 //  Copyright © 2020 Bilal Candemir. All rights reserved.
-//
 
 import UIKit
 import MapKit
 class PlaceMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
-    
-    
     var placeLatitude = Double()
     var placeLongitude = Double()
     var placeName = ""
     var placeType = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(placeLongitude) ve \(placeLatitude)")
-        navBar.tintColor = Colors.textColor
-        let leftButton:UIBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backPlace))
-        navBar.topItem?.leftBarButtonItem = leftButton
+
+       
+        
         getMapData()
     }
     

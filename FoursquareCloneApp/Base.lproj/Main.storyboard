@@ -137,7 +137,7 @@
         <!--Places View Controller-->
         <scene sceneID="EqU-G7-jDO">
             <objects>
-                <viewController storyboardIdentifier="PlacesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s40-nB-oyX" customClass="PlacesViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="s40-nB-oyX" customClass="PlacesViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5w7-HW-sIc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +249,6 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="next:" destination="iyr-Mu-vS5" eventType="touchUpInside" id="3xc-Gk-FXB"/>
-                                    <segue destination="vWv-PU-i8j" kind="presentation" modalPresentationStyle="fullScreen" id="o8C-ER-FBC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94m-lj-ZQ9">
@@ -309,7 +308,7 @@
         <!--Map View Controller-->
         <scene sceneID="TuK-PE-TZf">
             <objects>
-                <viewController storyboardIdentifier="MapVc" id="PDo-nj-D4V" customClass="MapViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" id="PDo-nj-D4V" customClass="MapViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YUX-3q-ecE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,12 +333,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGx-l4-STO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4770" y="-298.94366197183098"/>
+            <point key="canvasLocation" x="5316" y="-298"/>
         </scene>
         <!--Place Details View Controller-->
         <scene sceneID="ejP-an-3rZ">
             <objects>
-                <viewController storyboardIdentifier="DetailsVC" id="86k-Na-wtW" customClass="PlaceDetailsViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceDetailsVC" id="86k-Na-wtW" customClass="PlaceDetailsViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E8C-q9-fNQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,12 +357,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-cc-iYp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem id="BmW-Cm-P76"/>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKk-WY-k3p">
                                 <rect key="frame" x="16" y="447" width="288" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -377,60 +370,50 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="o5c-cc-iYp" firstAttribute="trailing" secondItem="iUV-L5-6lg" secondAttribute="trailing" id="BHQ-OA-8Za"/>
-                            <constraint firstItem="o5c-cc-iYp" firstAttribute="leading" secondItem="iUV-L5-6lg" secondAttribute="leading" id="ijs-Fp-CbK"/>
-                            <constraint firstItem="o5c-cc-iYp" firstAttribute="top" secondItem="iUV-L5-6lg" secondAttribute="top" id="sg7-PZ-3WJ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iUV-L5-6lg"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ecw-hG-azp"/>
                     <connections>
-                        <outlet property="navBar" destination="o5c-cc-iYp" id="Yt0-gw-70q"/>
                         <outlet property="placeCommentLabel" destination="FKk-WY-k3p" id="AfX-DA-BE1"/>
                         <outlet property="placeImage" destination="A3o-5o-XhH" id="4oR-Y4-oBq"/>
                         <outlet property="placeNameLabel" destination="s7t-m6-OQo" id="4wc-ug-S5c"/>
                         <outlet property="placeTypeLabel" destination="gL0-IK-O4Z" id="lCF-jg-Han"/>
-                        <segue destination="vHj-fm-vao" kind="presentation" identifier="toMapVC" modalPresentationStyle="fullScreen" id="IKF-pa-fqy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDv-jz-4Jf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3975" y="-1161.9718309859154"/>
+            <point key="canvasLocation" x="3810" y="-1189.4366197183099"/>
         </scene>
         <!--Place Map View Controller-->
         <scene sceneID="fRf-UM-FTd">
             <objects>
-                <viewController id="vHj-fm-vao" customClass="PlaceMapViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toMapVC" id="vHj-fm-vao" customClass="PlaceMapViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDw-OA-QYs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAh-Hz-IQ5">
-                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="B7g-Zi-URM"/>
-                                </items>
-                            </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xnw-no-0al">
-                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xnw-no-0al">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xnw-no-0al" firstAttribute="trailing" secondItem="qte-Fg-mQq" secondAttribute="trailing" id="1YS-P1-LNf"/>
+                            <constraint firstItem="xnw-no-0al" firstAttribute="leading" secondItem="qte-Fg-mQq" secondAttribute="leading" id="Boq-XS-MKf"/>
+                            <constraint firstItem="xnw-no-0al" firstAttribute="top" secondItem="qte-Fg-mQq" secondAttribute="top" id="kzq-XJ-Hvm"/>
+                            <constraint firstItem="qte-Fg-mQq" firstAttribute="bottom" secondItem="xnw-no-0al" secondAttribute="bottom" constant="-49" id="vgd-Ny-ba9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qte-Fg-mQq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jJR-h5-GYJ"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="xnw-no-0al" id="KQp-Qd-bis"/>
-                        <outlet property="navBar" destination="hAh-Hz-IQ5" id="SZY-D8-SKI"/>
-                        <segue destination="86k-Na-wtW" kind="presentation" identifier="toPlaceDetailsVC" modalPresentationStyle="fullScreen" id="9qe-D7-nJc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRS-sr-jqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5266.875" y="-1163.0281690140846"/>
+            <point key="canvasLocation" x="4882.5" y="-1189.4366197183099"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="dxh-NP-4tN">
@@ -648,7 +631,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ipn-Ll-Ydw">
             <objects>
-                <navigationController storyboardIdentifier="PlacesNC" automaticallyAdjustsScrollViewInsets="NO" id="3cB-Aj-ZAq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PlacesNC" automaticallyAdjustsScrollViewInsets="NO" id="3cB-Aj-ZAq" customClass="NavigationController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OQc-Hp-xhJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -664,30 +647,45 @@
             <point key="canvasLocation" x="-386" y="-297"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="uNV-xh-usa">
+        <scene sceneID="fDh-AW-bTY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vWv-PU-i8j" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PlaceDetailsNC" automaticallyAdjustsScrollViewInsets="NO" id="7eF-eP-GF1" customClass="NavigationController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Yqc-16-pIH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xT0-H1-rWQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u7P-fT-SYX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PDo-nj-D4V" kind="relationship" relationship="rootViewController" id="kmr-Rt-tfZ"/>
+                        <segue destination="86k-Na-wtW" kind="relationship" relationship="rootViewController" id="egO-2F-kbf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YsJ-j3-geg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gE1-N1-s0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3772.5" y="-298.94366197183098"/>
+            <point key="canvasLocation" x="2812.5" y="-1189.4366197183099"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ob3-Ro-S60">
+            <objects>
+                <navigationController storyboardIdentifier="MapNC" automaticallyAdjustsScrollViewInsets="NO" id="20g-e0-loZ" customClass="NavigationController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dLK-So-oIG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p4K-rW-Yyd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PDo-nj-D4V" kind="relationship" relationship="rootViewController" id="Qvv-4E-G0u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7tK-ap-1HV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4178" y="-298"/>
         </scene>
     </scenes>
     <resources>
         <image name="foursquareLogo" width="860" height="900"/>
         <image name="photo.fill" catalog="system" width="64" height="46"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="9qe-D7-nJc"/>
-    </inferredMetricsTieBreakers>
 </document>

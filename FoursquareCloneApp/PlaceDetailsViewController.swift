@@ -14,7 +14,6 @@ class PlaceDetailsViewController: UIViewController, NVActivityIndicatorViewable 
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeTypeLabel: UILabel!
     @IBOutlet weak var placeCommentLabel: UILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
     var selectedPlaceId = ""
     var placeName = ""
     var placeType = ""
@@ -25,12 +24,12 @@ class PlaceDetailsViewController: UIViewController, NVActivityIndicatorViewable 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startAnimating(size, message: "Loading", messageFont: UIFont(name: "Font", size: 7.0), type: .lineScale, color: Colors.textColor, textColor: Colors.textColor, fadeInAnimation: nil)
-        navigationController?.navigationBar.tintColor = Colors.textColor
-        navBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(toShowPlaceArea))
-        navBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house"), style: .plain, target: self, action: #selector(backToHome))
-        navBar.tintColor = Colors.textColor
+//        self.startAnimating(size, message: "Loading", messageFont: UIFont(name: "Font", size: 7.0), type: .lineScale, color: Colors.textColor, textColor: Colors.textColor, fadeInAnimation: nil)
         
+        
+        
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(toShowPlaceArea))
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "house.fill"), style: .plain, target: self, action: #selector(back))
         getData()
     }
 }
@@ -52,7 +51,7 @@ extension PlaceDetailsViewController{
                         if let placeName  = chosenPlaceObject.object(forKey: "name") as? String {
                             self.placeNameLabel.textColor = Colors.textColor
                             self.placeNameLabel.text = placeName
-                            self.navBar.topItem?.title = placeName
+                            self.title = placeName
                             self.placeName = placeName
                         }
                         if let placeType = chosenPlaceObject.object(forKey: "type") as? String {
@@ -92,23 +91,26 @@ extension PlaceDetailsViewController{
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMapVC"{
-            let destinationVC = segue.destination as? PlaceMapViewController
-            destinationVC?.placeLatitude = self.selectedPlaceLat
-            destinationVC?.placeLongitude = self.selectedPlaceLon
-            destinationVC?.placeName = self.placeName
-            destinationVC?.placeType = self.placeType
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toMapVC"{
+//            let destinationVC = segue.destination as? PlaceMapViewController
+//            destinationVC?.placeLatitude = self.selectedPlaceLat
+//            destinationVC?.placeLongitude = self.selectedPlaceLon
+//            destinationVC?.placeName = self.placeName
+//            destinationVC?.placeType = self.placeType
+//        }
+//    }
     @objc func toShowPlaceArea(){
-        performSegue(withIdentifier: "toMapVC", sender: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "toMapVC") as! PlaceMapViewController
+        vc.placeLatitude = self.selectedPlaceLat
+        vc.placeLongitude = self.selectedPlaceLon
+        vc.placeName = self.placeName
+        vc.placeType = self.placeType
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    @objc func backToHome(){
-        let nc = storyboard?.instantiateViewController(withIdentifier: "PlacesNC") as! UINavigationController
-        nc.modalPresentationStyle = .fullScreen
-        self.present(nc, animated: true, completion: nil)
-        
-        
+    
+    @objc func back(){
+        self.dismiss(animated: true, completion: nil)
     }
+    
 }

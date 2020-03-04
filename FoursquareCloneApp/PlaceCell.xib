@@ -30,10 +30,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uko-6I-06v">
+                        <rect key="frame" x="6" y="7" width="118" height="71"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="placeImage" destination="Uko-6I-06v" id="ofa-o8-9l1"/>
                 <outlet property="placeNameLabel" destination="uI6-ex-1GF" id="lvH-KR-eIZ"/>
                 <outlet property="placeTypeLabel" destination="fWR-Th-daN" id="dgv-CO-EY5"/>
             </connections>

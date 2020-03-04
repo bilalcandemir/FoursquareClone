@@ -11,6 +11,7 @@ import UIKit
 class PlaceCell: UITableViewCell {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeTypeLabel: UILabel!
+    @IBOutlet weak var placeImage: UIImageView!
     
     let placeModel = Models.sharedInstance
     override func awakeFromNib() {
@@ -32,4 +33,7 @@ class PlaceCell: UITableViewCell {
         placeTypeLabel.text = "Place Type: \(placeType.uppercased())"
     }
     
+    func placeImageConfigure(placeImage:UIImage){ //
+        self.placeImage.image = placeImage
+    }
 }

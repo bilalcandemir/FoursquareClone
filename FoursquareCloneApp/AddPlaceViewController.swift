@@ -43,6 +43,10 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
                 placeModel.placeType = placeTypeTF.text!
                 placeModel.placeComment = commentTF.text!
                 placeModel.placePhoto = choosenImage
+                
+                let nc = storyboard?.instantiateViewController(withIdentifier: "MapNC") as! UINavigationController
+                nc.modalPresentationStyle = .fullScreen
+                self.present(nc, animated: true, completion: nil)
             }
         }
         
@@ -82,6 +86,7 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         NextButton.layer.cornerRadius = 5
         
         
+        
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -116,4 +121,7 @@ extension AddPlaceViewController{
         selectImage.image = info[.originalImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
 }
