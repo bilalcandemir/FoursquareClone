@@ -398,21 +398,39 @@
             </objects>
             <point key="canvasLocation" x="3975" y="-1161.9718309859154"/>
         </scene>
-        <!--View Controller-->
+        <!--Place Map View Controller-->
         <scene sceneID="fRf-UM-FTd">
             <objects>
-                <viewController id="vHj-fm-vao" sceneMemberID="viewController">
+                <viewController id="vHj-fm-vao" customClass="PlaceMapViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDw-OA-QYs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAh-Hz-IQ5">
+                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="B7g-Zi-URM"/>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xnw-no-0al">
+                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="qte-Fg-mQq"/>
                     </view>
                     <navigationItem key="navigationItem" id="jJR-h5-GYJ"/>
+                    <connections>
+                        <outlet property="mapView" destination="xnw-no-0al" id="KQp-Qd-bis"/>
+                        <outlet property="navBar" destination="hAh-Hz-IQ5" id="SZY-D8-SKI"/>
+                        <segue destination="86k-Na-wtW" kind="presentation" identifier="toPlaceDetailsVC" modalPresentationStyle="fullScreen" id="9qe-D7-nJc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRS-sr-jqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5220" y="-1154.5774647887324"/>
+            <point key="canvasLocation" x="5266.875" y="-1163.0281690140846"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="dxh-NP-4tN">
@@ -669,4 +687,7 @@
         <image name="foursquareLogo" width="860" height="900"/>
         <image name="photo.fill" catalog="system" width="64" height="46"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9qe-D7-nJc"/>
+    </inferredMetricsTieBreakers>
 </document>

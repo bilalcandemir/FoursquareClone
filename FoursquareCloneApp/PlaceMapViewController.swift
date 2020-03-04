@@ -7,24 +7,44 @@
 //
 
 import UIKit
-
-class PlaceMapViewController: UIViewController {
-
+import MapKit
+class PlaceMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    var placeLatitude = Double()
+    var placeLongitude = Double()
+    var placeName = ""
+    var placeType = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("\(placeLongitude) ve \(placeLatitude)")
+        navBar.tintColor = Colors.textColor
+        let leftButton:UIBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backPlace))
+        navBar.topItem?.leftBarButtonItem = leftButton
+        getMapData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getMapData(){
+        let location = CLLocationCoordinate2D(latitude: placeLatitude, longitude: placeLongitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.035, longitudeDelta: 0.035)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+               
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = placeName
+        annotation.subtitle = placeType
+        mapView.addAnnotation(annotation)
     }
-    */
+    
+}
 
+
+extension PlaceMapViewController{
+    @objc func backPlace(){
+        performSegue(withIdentifier: "toPlaceDetailsVC", sender: nil)
+    }
+    
 }

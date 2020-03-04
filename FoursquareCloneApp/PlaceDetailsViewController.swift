@@ -16,9 +16,12 @@ class PlaceDetailsViewController: UIViewController, NVActivityIndicatorViewable 
     @IBOutlet weak var placeCommentLabel: UILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     var selectedPlaceId = ""
+    var placeName = ""
+    var placeType = ""
     var selectedPlaceLat = Double()
     var selectedPlaceLon = Double()
     var size = CGSize(width: 30.0, height: 30.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +34,7 @@ class PlaceDetailsViewController: UIViewController, NVActivityIndicatorViewable 
         getData()
     }
 }
+
 
 extension PlaceDetailsViewController{
     func getData(){
@@ -49,10 +53,12 @@ extension PlaceDetailsViewController{
                             self.placeNameLabel.textColor = Colors.textColor
                             self.placeNameLabel.text = placeName
                             self.navBar.topItem?.title = placeName
+                            self.placeName = placeName
                         }
                         if let placeType = chosenPlaceObject.object(forKey: "type") as? String {
                             self.placeTypeLabel.textColor = Colors.textColor
                             self.placeTypeLabel.text = placeType
+                            self.placeType = placeType
                         }
                         if let placeComment = chosenPlaceObject.object(forKey: "comment") as? String {
                             self.placeCommentLabel.textColor = Colors.textColor
@@ -86,7 +92,15 @@ extension PlaceDetailsViewController{
     }
     
 
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapVC"{
+            let destinationVC = segue.destination as? PlaceMapViewController
+            destinationVC?.placeLatitude = self.selectedPlaceLat
+            destinationVC?.placeLongitude = self.selectedPlaceLon
+            destinationVC?.placeName = self.placeName
+            destinationVC?.placeType = self.placeType
+        }
+    }
     @objc func toShowPlaceArea(){
         performSegue(withIdentifier: "toMapVC", sender: nil)
     }
