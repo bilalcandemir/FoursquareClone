@@ -24,7 +24,7 @@ class PlaceDetailsViewController: UIViewController, NVActivityIndicatorViewable 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.startAnimating(size, message: "Loading", messageFont: UIFont(name: "Font", size: 7.0), type: .lineScale, color: Colors.textColor, textColor: Colors.textColor, fadeInAnimation: nil)
+        self.startAnimating(size, message: "Loading", messageFont: UIFont(name: "Font", size: 7.0), type: .lineScale, color: Colors.textColor, textColor: Colors.textColor, fadeInAnimation: nil)
         
         
         
@@ -84,22 +84,13 @@ extension PlaceDetailsViewController{
                             }
                         }
                     }
+                    self.stopAnimating()
                 }
             }
         }
         
     }
     
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toMapVC"{
-//            let destinationVC = segue.destination as? PlaceMapViewController
-//            destinationVC?.placeLatitude = self.selectedPlaceLat
-//            destinationVC?.placeLongitude = self.selectedPlaceLon
-//            destinationVC?.placeName = self.placeName
-//            destinationVC?.placeType = self.placeType
-//        }
-//    }
     @objc func toShowPlaceArea(){
         let vc = storyboard?.instantiateViewController(withIdentifier: "toMapVC") as! PlaceMapViewController
         vc.placeLatitude = self.selectedPlaceLat
@@ -112,5 +103,8 @@ extension PlaceDetailsViewController{
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
+
+
+
+

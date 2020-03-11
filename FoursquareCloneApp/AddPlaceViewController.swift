@@ -13,12 +13,16 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
     var alertMessage = ""
     var alertCounter = 0
     var placeList = [Models]() //
+    var placeTypeList = ["Coffee","Kebab","Drink","Eat","Hookah"]
+    var pickerView = UIPickerView()
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeTypeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var addPictureLabel: UILabel!
-    @IBOutlet weak var placeNameTf: UITextField!
     @IBOutlet weak var placeTypeTF: UITextField!
+    
+    
+    @IBOutlet weak var placeNameTf: UITextField!
+    
     @IBOutlet weak var commentTF: UITextField!
     @IBOutlet weak var selectImage: UIImageView!
     @IBOutlet weak var NextButton: UIButton!
@@ -61,6 +65,13 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         self.title = "Add Place"
         self.navigationItem.title = "Add Place"
         
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        placeTypeTF.inputView = pickerView
+        
+        
+        
         selectImage.isUserInteractionEnabled = true
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
         selectImage.addGestureRecognizer(imageTap)
@@ -74,11 +85,9 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate,
         commentLabel.textColor = Colors.textColor
         commentLabel.text = "Add Comment :"
         
-        addPictureLabel.text = "Tap And Choose Image"
-        addPictureLabel.textColor = Colors.textColor
         
         placeNameTf.textColor = Colors.textColor
-        placeTypeTF.textColor = Colors.textColor
+        
         commentTF.textColor = Colors.textColor
         
         NextButton.tintColor = UIColor.white
@@ -122,6 +131,25 @@ extension AddPlaceViewController{
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    
+}
+
+extension AddPlaceViewController:UIPickerViewDataSource, UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return placeTypeList.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        placeTypeList[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        placeTypeTF.text = placeTypeList[row]
+        
+    }
     
     
 }

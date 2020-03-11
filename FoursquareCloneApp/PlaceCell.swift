@@ -23,17 +23,29 @@ class PlaceCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         placeNameLabel.textColor = Colors.textColor
         placeTypeLabel.textColor = Colors.textColor
+        accessoryView = .none
+        selectionStyle = .none
         
     }
     func placeNameConfigure( placeName: String){
-        placeNameLabel.text = "Place Name: \(placeName.uppercased())"
+        placeNameLabel.text = "\(placeName.capitalizingFirstLetter())"
     }
     
     func placeTypeConfigure(placeType:String){
-        placeTypeLabel.text = "Place Type: \(placeType.uppercased())"
+        placeTypeLabel.text = "\(placeType.capitalizingFirstLetter())"
     }
     
     func placeImageConfigure(placeImage:UIImage){ //
         self.placeImage.image = placeImage
+    }
+}
+
+extension String{
+    func capitalizingFirstLetter() -> String {
+      return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+      self = self.capitalizingFirstLetter()
     }
 }

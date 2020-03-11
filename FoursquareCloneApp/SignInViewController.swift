@@ -20,12 +20,12 @@ class SignInViewController: UIViewController {
     @IBAction func signIn(_ sender: Any) {
         
         if (usernameTextField.text == "" && passwordTextField.text == ""){
-            alert(message: "SignIn Error")
+            alert(message: "username/password empty.")
         }
         else{
             PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if error != nil{
-                    //self.alert(message: error?.localizedDescription ?? "Error")
+                    self.alert(message: error?.localizedDescription ?? "Error")
                 }
                 else{
                     // MARK: Segue

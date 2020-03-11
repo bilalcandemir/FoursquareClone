@@ -15,6 +15,8 @@ class PlacesViewController: UIViewController, NVActivityIndicatorViewable {
     var placeType = [String]()
     var placeId = [String]()
     var selectedPlaceId = ""
+    var placeImage = [PFFileObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let size = CGSize(width: 30.0, height: 30.0)
@@ -23,8 +25,10 @@ class PlacesViewController: UIViewController, NVActivityIndicatorViewable {
         self.title = "Places"
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addPlace))
-        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(userDetails))
-        navigationController?.navigationBar.tintColor = Colors.textColor
+        let userDetailsButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(userDetails))
+        let menuButton = UIBarButtonItem(image: .checkmark, style: .plain, target: self, action: #selector(addPlace))
+        
+        navigationController?.navigationBar.topItem?.leftBarButtonItems = [userDetailsButton,menuButton] // Menü butonu eklenecek
         
         getPlaces()
         tableView.dataSource = self
@@ -44,7 +48,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 90
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,11 +56,22 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:PlaceCell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell") as! PlaceCell
         let placename = placeName[indexPath.row]
         let placetype = placeType[indexPath.row]
-        let cell:PlaceCell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell") as! PlaceCell
+        placeImage[indexPath.row].getDataInBackground { (data, error) in
+            if error != nil{
+                
+            }
+            else{
+                cell.placeImageConfigure(placeImage: UIImage(data: data!)!)
+            }
+        }
+        
+        
         cell.placeNameConfigure(placeName: placename)
         cell.placeTypeConfigure(placeType: placetype)
+        
         return cell
     }
     
@@ -92,16 +107,24 @@ extension PlacesViewController{
                 if objects != nil{
                     
                     
+//                    for object in objects!{
+//                        if let placeName = object.object(forKey: "name") as? String{
+//                            if let placeType = object.object(forKey: "type") as? String{
+//                                if let placeId = object.objectId{
+//                                    self.placeName.append(placeName)
+//                                    self.placeType.append(placeType)
+//                                    self.placeId.append(placeId)
+//
+//                                }
+//                            }
+//                        }
+//                    }
+                    
                     for object in objects!{
-                        if let placeName = object.object(forKey: "name") as? String{
-                            if let placeType = object.object(forKey: "type") as? String{
-                                if let placeId = object.objectId{
-                                    self.placeName.append(placeName)
-                                    self.placeType.append(placeType)
-                                    self.placeId.append(placeId)
-                                }
-                            }
-                        }
+                        self.placeName.append(object.object(forKey: "name") as! String)
+                        self.placeType.append(object.object(forKey: "type") as! String)
+                        self.placeId.append(object.objectId!)
+                        self.placeImage.append(object.object(forKey: "image") as! PFFileObject)
                     }
                     self.stopAnimating()
                     self.tableView.reloadData()
