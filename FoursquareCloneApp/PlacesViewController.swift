@@ -14,7 +14,9 @@ class PlacesViewController: UIViewController, NVActivityIndicatorViewable {
     var placeName = [String]()
     var placeType = [String]()
     var placeId = [String]()
+    var placeRate = [Int]()
     var selectedPlaceId = ""
+    var selectedPlaceType = ""
     var placeImage = [PFFileObject]()
     
     override func viewDidLoad() {
@@ -28,7 +30,7 @@ class PlacesViewController: UIViewController, NVActivityIndicatorViewable {
         let userDetailsButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(userDetails))
         let menuButton = UIBarButtonItem(image: .checkmark, style: .plain, target: self, action: #selector(addPlace))
         
-        navigationController?.navigationBar.topItem?.leftBarButtonItems = [userDetailsButton,menuButton] // Menü butonu eklenecek
+        //navigationController?.navigationBar.topItem?.leftBarButtonItems = [userDetailsButton,menuButton] // Menü butonu eklenecek
         
         getPlaces()
         tableView.dataSource = self
@@ -48,7 +50,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 100
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +61,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
         let cell:PlaceCell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell") as! PlaceCell
         let placename = placeName[indexPath.row]
         let placetype = placeType[indexPath.row]
+        let placerate = placeRate[indexPath.row]
         placeImage[indexPath.row].getDataInBackground { (data, error) in
             if error != nil{
                 
@@ -71,10 +74,9 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.placeNameConfigure(placeName: placename)
         cell.placeTypeConfigure(placeType: placetype)
-        
+        cell.placeRateConfigure(placerate)
         return cell
     }
-    
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -99,6 +101,7 @@ extension PlacesViewController{
     
     func getPlaces(){
         let query = PFQuery(className: "Places")
+        query.whereKey("type", equalTo: selectedPlaceType)
         query.findObjectsInBackground { (objects, error) in
             if error != nil{
                 print(error)
@@ -106,25 +109,12 @@ extension PlacesViewController{
             else{
                 if objects != nil{
                     
-                    
-//                    for object in objects!{
-//                        if let placeName = object.object(forKey: "name") as? String{
-//                            if let placeType = object.object(forKey: "type") as? String{
-//                                if let placeId = object.objectId{
-//                                    self.placeName.append(placeName)
-//                                    self.placeType.append(placeType)
-//                                    self.placeId.append(placeId)
-//
-//                                }
-//                            }
-//                        }
-//                    }
-                    
                     for object in objects!{
                         self.placeName.append(object.object(forKey: "name") as! String)
                         self.placeType.append(object.object(forKey: "type") as! String)
                         self.placeId.append(object.objectId!)
                         self.placeImage.append(object.object(forKey: "image") as! PFFileObject)
+                        self.placeRate.append(object.object(forKey: "rate") as! Int)
                     }
                     self.stopAnimating()
                     self.tableView.reloadData()

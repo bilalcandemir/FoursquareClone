@@ -51,7 +51,7 @@ extension PlaceDetailsViewController{
                         if let placeName  = chosenPlaceObject.object(forKey: "name") as? String {
                             self.placeNameLabel.textColor = Colors.textColor
                             self.placeNameLabel.text = placeName
-                            self.title = placeName
+                            self.title = placeName.uppercased()
                             self.placeName = placeName
                         }
                         if let placeType = chosenPlaceObject.object(forKey: "type") as? String {

@@ -18,6 +18,7 @@ class Models{
     var placePhoto = UIImage()
     var placeLatitude = ""
     var placeLongitude = ""
+    var rate:Int?
     private init(){}
     
 }

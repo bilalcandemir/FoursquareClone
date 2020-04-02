@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BIX-0C-Z5d">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SplashVC-->
+        <scene sceneID="nPC-tu-0y6">
+            <objects>
+                <viewController storyboardIdentifier="SplashVC" id="BIX-0C-Z5d" customClass="SplashVC" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q6Y-WG-ogZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foursquareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="hjU-ne-7ce">
+                                <rect key="frame" x="69.5" y="309.5" width="275" height="277"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="CWK-MF-8zc"/>
+                                    <constraint firstAttribute="height" constant="277" id="s9l-dg-BTC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.96999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hjU-ne-7ce" firstAttribute="centerY" secondItem="q6Y-WG-ogZ" secondAttribute="centerY" id="Lq4-lV-T03"/>
+                            <constraint firstItem="hjU-ne-7ce" firstAttribute="centerX" secondItem="q6Y-WG-ogZ" secondAttribute="centerX" id="MfD-FX-mKy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xx3-HC-dUj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WPB-eq-4l9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92.753623188405811" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="foursquareLogo" width="286.5" height="300"/>
+    </resources>
+</document>

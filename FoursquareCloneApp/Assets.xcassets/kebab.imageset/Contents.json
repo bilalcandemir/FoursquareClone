@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "foursquareLogo.png",
+      "filename" : "kebab.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "foursquareLogo@2x.png",
+      "filename" : "kebab@2x.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "foursquareLogo@3x.png",
+      "filename" : "kebab@3x.jpg",
       "scale" : "3x"
     }
   ],

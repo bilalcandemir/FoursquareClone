@@ -54,6 +54,7 @@ extension MapViewController{
         object["comment"] = placeModel.placeComment
         object["latitude"] = placeModel.placeLatitude
         object["longitude"] = placeModel.placeLongitude
+        object["rate"] = placeModel.rate
         let imageName = UUID()
         
         
@@ -105,5 +106,4 @@ extension MapViewController{
         let region = MKCoordinateRegion(center: location, span: span)
         map.setRegion(region, animated: true)
     }
-    
 }

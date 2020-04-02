@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let currentUser = PFUser.current()
         if currentUser != nil{
             let board = UIStoryboard(name: "Main", bundle: nil)
-            let PlacesVc = board.instantiateViewController(withIdentifier: "PlacesNC") as! UINavigationController
-            window?.rootViewController = PlacesVc
+            let MainVC = board.instantiateViewController(withIdentifier: "MainVC") as! MainVC
+            window?.rootViewController = MainVC
         }
         
         
